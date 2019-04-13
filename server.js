@@ -1,6 +1,7 @@
 const express = require("express");
 const mongoose = require("mongoose");
 const bodyParser = require("body-parser");
+const passport = require("passport");
 
 const users = require("./routes/api/users");
 const profile = require("./routes/api/profile");
@@ -21,9 +22,11 @@ mongoose
   .then(() => console.log("Mongoose connected"))
   .catch(err => console.log("MongoDB error is " + err));
 
-app.get("/", (req, res) => {
-  res.send("Hello World");
-});
+//Passport middleware
+app.use(passport.initialize());
+
+//Passport config
+require("./config/passport")(passport);
 
 //To use the router in our main app file we would then require() the route module (wiki.js), then call use() on the Express application to add the Router to the middleware handling path.
 // Use Routes
