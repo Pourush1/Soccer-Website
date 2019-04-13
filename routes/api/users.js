@@ -7,6 +7,9 @@ const jwt = require("jsonwebtoken");
 const keys = require("../../config/keys");
 const passport = require("passport");
 
+//Load Input Validation
+const validateRegisterInput = require("../../validation/register");
+
 // Load User model
 const User = require("../../models/User");
 
@@ -19,8 +22,17 @@ router.get("/test", (req, res) => res.json({ msg: "Users Works" }));
 // @desc    Register route
 // @access  Public
 router.post("/register", (req, res) => {
+  //Destructuring concept used here
+  const { errors, isValid } = validateRegisterInput(req.body);
+
+  //Check validation
+  if (!isValid) {
+    return res.status(400).json(errors);
+  }
+
   User.findOne({ email: req.body.email }).then(user => {
     if (user) {
+      errors.email = "Email already exists";
       return res.status(400).json({ email: "Email already exist" });
     } else {
       const avatar = gravatar.url(req.body.email, {
