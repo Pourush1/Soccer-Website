@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { Link } from "react-router-dom";
 
 class SoccerPage extends Component {
   render() {
@@ -8,19 +9,21 @@ class SoccerPage extends Component {
           <div className="container">
             <div className="row">
               <div className="col-md-12 text-center">
-                <h1 className="display-3 mb-4">Developer Connector</h1>
+                <h1 className="display-3 mb-4">
+                  Welcome to the world of Soccer
+                </h1>
                 <p className="lead">
                   {" "}
-                  Create a developer profile/portfolio, share posts and get help
-                  from other developers
+                  A website to get all your news about Soccer and the games
+                  around the world.
                 </p>
                 <hr />
-                <a href="register.html" className="btn btn-lg btn-info mr-2">
+                <Link to="/register" className="btn btn-lg btn-info mr-2">
                   Sign Up
-                </a>
-                <a href="login.html" className="btn btn-lg btn-light">
+                </Link>
+                <Link to="/login" className="btn btn-lg btn-light">
                   Login
-                </a>
+                </Link>
               </div>
             </div>
           </div>

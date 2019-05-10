@@ -24,6 +24,7 @@ router.get("/test", (req, res) => res.json({ msg: "Users Works" }));
 // @access  Public
 router.post("/register", (req, res) => {
   //Destructuring concept used here
+  console.log(req.body.name);
   const { errors, isValid } = validateRegisterInput(req.body);
 
   //Check validation
