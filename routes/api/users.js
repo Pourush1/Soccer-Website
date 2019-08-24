@@ -19,12 +19,12 @@ const User = require("../../models/User");
 // @access  Public
 router.get("/test", (req, res) => res.json({ msg: "Users Works" }));
 
-// @route   GET api/users/register
+// @route   POST api/users/register
 // @desc    Register route
 // @access  Public
 router.post("/register", (req, res) => {
   //Destructuring concept used here
-  console.log(req.body.name);
+  // console.log(req.body.name);
   const { errors, isValid } = validateRegisterInput(req.body);
 
   //Check validation
